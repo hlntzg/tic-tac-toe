@@ -27,7 +27,7 @@ function Square({value, onSquareClick}) {
 }
 
 export default function Board() {
-//  return <button className="square">🍑</button>;
+//  return <button className="square">X</button>;
   const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState(Array(9).fill(null));
   
@@ -36,6 +36,8 @@ export default function Board() {
   let status;
   if (winner) {
     status = `Winner: ${winner}`;
+  } else if (squares.every(square => square !== null)) {
+    status = `No winner :(`;
   } else {
     status = `Next player: ${xIsNext ? "X" : "O"}`;
   }
