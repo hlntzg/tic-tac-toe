@@ -28,12 +28,16 @@ function Square({value, onSquareClick}) {
 
 export default function Board() {
 //  return <button className="square">🍑</button>;
+  const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState(Array(9).fill(null));
   
   function handleClick(i) {
-    const nextSquares = squares.slice();
-    nextSquares[i] = "X";
-    setSquares(nextSquares);
+    if (!squares[i]) {
+      const nextSquares = squares.slice();
+      nextSquares[i] = xIsNext ? "X" : "O";
+      setSquares(nextSquares);
+      setXIsNext(!xIsNext);
+    }
   }
 
   return (
@@ -56,14 +60,3 @@ export default function Board() {
     </>
   );
 }
-
-
-/**
- * React State Handling in Board and Square Components
- * - State is handled in the parent Board component.
- * - The Board passes props (like value and onClick) to each child Square component.
- * - When a Square is clicked, it calls a function passed from the Board, asking the parent to update the game state.
- * - When the Board's state updates, React automatically re-renders:
- *   - The Board itself, and
- *   - All its Square children with updated props.
- */
