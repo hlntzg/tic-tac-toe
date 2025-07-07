@@ -1,7 +1,24 @@
-function Square({ value }) { 
+import { useState } from 'react';
+
+function Square() { 
   // use props to pass the value each square should have 
   // from the parent component (Board) to its child (Square).
-  return <button className="square">{value}</button>;
+  const [value, setValue] = useState(null);
+  
+  function handleClick() {
+    //alert('You clicked!');
+    console.log('clicked!');
+    setValue('X');
+  }
+  // return <button className="square">{value}</button>;
+  return (
+    <button
+      className="square"
+      onClick={handleClick}
+    >
+      {value}
+    </button>
+  );
 }
 
 export default function Board() {
@@ -9,19 +26,19 @@ export default function Board() {
   return (
     <>
       <div className="board-row">
-        <Square value="1"/>
-        <Square value="2"/>
-        <Square value="3"/>
+        <Square />
+        <Square />
+        <Square />
       </div>
       <div className="board-row">
-        <Square value=""/>
-        <Square value=""/>
-        <Square value=""/>
+        <Square />
+        <Square />
+        <Square />
       </div>
       <div className="board-row">
-        <button className="square">🍑</button>
-        <button className="square">🍑</button>
-        <button className="square">🍑</button>
+        <Square />
+        <Square />
+        <Square />
       </div>
     </>
   );
