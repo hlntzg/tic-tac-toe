@@ -80,6 +80,16 @@ function getWinner(squares) {
   return null;
 }
 
+function Game() {
+  return (
+    <div className="game">
+      <div className="game-board">
+        <Board />
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const getInitialMode = () => {
     const savedMode = localStorage.getItem("darkMode");
@@ -102,10 +112,10 @@ export default function App() {
   return (
     <div className={darkMode ? "app dark" : "app"}>
       <button className="toggle-btn" onClick={toggleDarkMode}>
-        {darkMode ? "Light Mode" : "Dark Mode"}
+        {darkMode ? "☀︎" : "☾"}
       </button>
       <h1>tic-tac-toe</h1>
-      <Board />
+      <Game />
     </div>
   );
 }
