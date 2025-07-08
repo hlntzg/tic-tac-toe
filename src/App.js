@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Square({value, onSquareClick}) { 
   return (
@@ -81,9 +81,21 @@ function getWinner(squares) {
 }
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const getInitialMode = () => {
+    const savedMode = localStorage.getItem("darkMode");
+    if (savedMode !== null) {
+      return savedMode === "true"; // convert back to boolean
+    } else {
+      // fallback to system preference
+      return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+  };
 
-  console.log(darkMode)
+  const [darkMode, setDarkMode] = useState(getInitialMode);
+
+  useEffect(() => {
+    localStorage.setItem("darkMode", darkMode);
+  }, [darkMode]);
 
   const toggleDarkMode = () => setDarkMode(prev => !prev);
 
