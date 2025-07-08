@@ -1,23 +1,6 @@
 import { useState } from 'react';
 
 function Square({value, onSquareClick}) { 
-  // use props to pass the value each square should have 
-  // from the parent component (Board) to its child (Square).
-  //const [value, setValue] = useState(null);
-  
-  // function handleClick() {
-  //   //alert('You clicked!');
-  //   console.log('clicked!');
-  //   setValue('X');
-  // }
-  // return (
-  //   <button
-  //     className="square"
-  //     //onClick={handleClick}
-  //   >
-  //     {value}
-  //   </button>
-  // );
   return (
     <button className="square"
       onClick={onSquareClick}>
@@ -26,7 +9,7 @@ function Square({value, onSquareClick}) {
   );
 }
 
-export default function Board() {
+function Board() {
 //  return <button className="square">X</button>;
   const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState(Array(9).fill(null));
@@ -97,3 +80,20 @@ function getWinner(squares) {
   return null;
 }
 
+export default function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  console.log(darkMode)
+
+  const toggleDarkMode = () => setDarkMode(prev => !prev);
+
+  return (
+    <div className={darkMode ? "app dark" : "app"}>
+      <button className="toggle-btn" onClick={toggleDarkMode}>
+        {darkMode ? "Light Mode" : "Dark Mode"}
+      </button>
+      <h1>tic-tac-toe</h1>
+      <Board />
+    </div>
+  );
+}

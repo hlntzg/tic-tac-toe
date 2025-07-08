@@ -4,19 +4,19 @@
 
 body {
   font-family: "Lucida Console", Courier, monospace;
-  margin: 20px;
+  /* margin: 20px; */
   padding: 0;
   display: flex;
   background-color: #c2bdbd;
   justify-content: center;
   align-items: center;
-  height: 75vh;
   text-align: center;
   flex-direction: column;
 }
 
 #root {
   width: 100vw;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -92,4 +92,48 @@ ul {
 
 .game-info {
   margin-left: 20px;
+}
+
+/* Container class */
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* Dark mode styles */
+.dark {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+.dark body {
+  background-color: #1e1e1e;
+}
+
+.dark .square {
+  background: #333;
+  color: #f0f0f0;
+  border: 2px solid #555;
+}
+
+.dark .status {
+  color: #f0f0f0;
+}
+
+/* Toggle button */
+.toggle-btn {
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 50px;
+}
+
+.toggle-btn:hover {
+  background-color: #666;
 }
