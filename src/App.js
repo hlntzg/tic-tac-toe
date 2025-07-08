@@ -26,7 +26,7 @@ function Board() {
   }
 
   function handleClick(i) {
-    if (!squares[i] && !getWinner(squares)) {
+    if (!squares[i] && !winner) {
       const nextSquares = squares.slice();
       nextSquares[i] = xIsNext ? "X" : "O";
       setSquares(nextSquares);
