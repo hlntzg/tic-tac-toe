@@ -9,11 +9,7 @@ function Square({value, onSquareClick}) {
   );
 }
 
-function Board() {
-//  return <button className="square">X</button>;
-  const [xIsNext, setXIsNext] = useState(true);
-  const [squares, setSquares] = useState(Array(9).fill(null));
-  
+function Board({ squares, setSquares, xIsNext, setXIsNext }) {
   const winner = getWinner(squares);
 
   let status;
@@ -55,6 +51,33 @@ function Board() {
     </>
   );
 }
+
+function Game() {
+  const [squares, setSquares] = useState(Array(9).fill(null));
+  const [xIsNext, setXIsNext] = useState(true);
+
+  const resetGame = () => {
+    setSquares(Array(9).fill(null));
+    setXIsNext(true);
+  };
+
+  return (
+    <div className="game">
+      <div className="game-board">
+        <Board
+          squares={squares}
+          setSquares={setSquares}
+          xIsNext={xIsNext}
+          setXIsNext={setXIsNext}
+        />
+        <button className="reset-btn" onClick={resetGame}>
+          Reset Game
+        </button>
+      </div>
+    </div>
+  );
+}
+
 
 /** check all the possible winning combinations 
  * (rows, columns, diagonals) and return 'X', 'O', or null if there’s no winner yet.
@@ -105,7 +128,7 @@ export default function App() {
         {darkMode ? "☀︎" : "☾"}
       </button>
       <h1>tic-tac-toe</h1>
-      <Board />
+      <Game />
     </div>
   );
 }

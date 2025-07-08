@@ -151,3 +151,19 @@ ul {
 .toggle-btn:hover {
   background-color: #666;
 }
+
+.reset-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-family: "Lucida Console", Courier, monospace;
+  font-size: 14px;
+  border: none;
+  border-radius: 50px;
+  background-color: #444;
+  color: white;
+  cursor: pointer;
+}
+
+.reset-btn:hover {
+  background-color: #666;
+}
